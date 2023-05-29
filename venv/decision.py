@@ -27,10 +27,9 @@ X = data[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
 #X = data[['Pclass', 'Sex', 'Age']]
 y = data['Survived']
 
-# train/test split (80/20)
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=65)
 
-# Train a decision tree
+# Тренировка дерева решений
 dt = DecisionTreeClassifier(max_depth=3)
 dt_model = dt.fit(x_train, y_train)
 
@@ -39,5 +38,5 @@ fig = plt.figure(figsize=(12, 10))
 tree.plot_tree(dt_model, feature_names=list(X.columns), class_names=['Not survived', 'Survived'])
 plt.show()
 
-# Evaluate model performance on testing set
+# Оценка эффективности модели
 print("Accuracy score on Testing set: ", dt_model.score(x_test, y_test))
